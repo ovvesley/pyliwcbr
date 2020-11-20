@@ -14,7 +14,7 @@ class Liwc:
     __raw_file = None
     __encoding = "utf-8"
 
-    __categories = {}
+    __categories = set()
     __process_categories_complete = False
     __process_categories_count_mark = 0
     __process_categories_length_mark = 2
@@ -23,6 +23,7 @@ class Liwc:
     def __init__(self, path_to_file):
         file = self.__open_file(self.__absolute_path_file + path_to_file)
         self.__handle_file(file)
+        print(self.__categories)
 
     def __set_absolute_path(self, path):
         self.__absolute_path_file = path
@@ -74,12 +75,13 @@ class Liwc:
         if categories_mark == line_string.strip():
             pass
         else:
-            # Category(line_string)
+            category = Category(line_string)
+            self.__add_categories(category)
 
-            pass
 
-    def __add_categories(self):
-        pass
+    def __add_categories(self, category):
+        self.__categories.add(category)
+
     def __processing_categories(self, line_string):
         length_mark = self.__process_categories_length_mark
         count_mark = self.__processing_categories_add_mark(line_string)
@@ -89,6 +91,8 @@ class Liwc:
             self.__set_process_categories_complete(True)
             return True
 
+    def get_categories(self):
+        return self.__categories
 
 def test_class():
     print(os.path.dirname(__file__))
