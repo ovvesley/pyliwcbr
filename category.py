@@ -43,7 +43,8 @@ class Category:
         self.__set_tag(tag)
         self.__set_raw_tag(raw_tag)
 
-        print(self)
+    def __str__(self):
+        return self.__id + "-" + self.__tag
 
 
 def _test_class():
