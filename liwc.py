@@ -8,6 +8,10 @@ import os
 # noinspection PyUnresolvedReferences
 from category import Category
 
+__author__ = "Wesley Ferreira - @ovvesley "
+__copyright__ = "Copyright 2020, Chat Analyse Project"
+__email__ = "ovvesley@protonmail.com"
+
 
 class Liwc:
     __absolute_path_file = ""
@@ -78,7 +82,6 @@ class Liwc:
             category = Category(line_string)
             self.__add_categories(category)
 
-
     def __add_categories(self, category):
         self.__categories.add(category)
 
@@ -100,7 +103,8 @@ class Liwc:
         for category in categories:
             if category.get_id() == id:
                 return category
-        raise NameError("Categoria com id {} não definida. Verifique o dicionário e veja se a categoria foi definida.".format(id))
+        raise NameError(
+            "Categoria com id {} não definida. Verifique o dicionário e veja se a categoria foi definida.".format(id))
 
 
 def test_class():
