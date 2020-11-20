@@ -38,9 +38,13 @@ class Liwc():
 
     def _handle_file(self, file):
         file = self._raw_file
+        processing_categories_complete = self._process_categories_complete
         for line in file:
-            self._processing_categories(line)
-            # print(line)
+            if not processing_categories_complete:
+                self._processing_categories(line)
+                processing_categories_complete = self._process_categories_complete
+            else:
+                print("complete processinng", line)
 
     def _set_process_categories_count_mark(self, n):
         self._process_categories_count_mark = n
@@ -64,17 +68,13 @@ class Liwc():
         return new_count_mark
 
     def _processing_categories(self, line_string):
-        process_categories_complete = self._process_categories_complete
-        if process_categories_complete:
-            return
+        length_mark = self._process_categories_length_mark
+        count_mark = self._processing_categories_add_mark(line_string)
+        if length_mark != count_mark:
+            print(line_string)
         else:
-            length_mark = self._process_categories_length_mark
-            count_mark = self._processing_categories_add_mark(line_string)
-            if length_mark != count_mark:
-                print(line_string)
-            else:
-                self._set_process_categories_complete(True)
-                return True
+            self._set_process_categories_complete(True)
+            return True
 
 
 def _test_class():
