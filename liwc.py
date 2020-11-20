@@ -94,9 +94,19 @@ class Liwc:
     def get_categories(self):
         return self.__categories
 
+    def find_id_category(self, id):
+        id = str(id)
+        categories = self.get_categories()
+        for category in categories:
+            if category.get_id() == id:
+                return category
+        raise NameError("Categoria com id {} não definida. Verifique o dicionário e veja se a categoria foi definida.".format(id))
+
+
 def test_class():
     print(os.path.dirname(__file__))
     liwc = Liwc("resources/dictionaries/liwc_2015_pt2_sem_pulo_linhas.dic")
+    print(liwc.find_id_category(25))
 
 
 test_class()
