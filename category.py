@@ -1,4 +1,13 @@
+"""
+
+Este módulo é responsável pela classe de Categoria do liwc, informando id, tag e palavras que cada categoria é responsável.
+
+"""
 import re
+
+__author__ = "Wesley Ferreira - @ovvesley "
+__copyright__ = "Copyright 2020, Chat Analyse Project"
+__email__ = "ovvesley@protonmail.com"
 
 
 class Category:
