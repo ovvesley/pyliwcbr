@@ -43,6 +43,12 @@ class Category:
         self.__set_tag(tag)
         self.__set_raw_tag(raw_tag)
 
+    def get_id(self):
+        return self.__id
+
+    def get_tag(self):
+        return self.__tag
+
     def __str__(self):
         return self.__id + "-" + self.__tag
 
