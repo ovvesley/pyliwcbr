@@ -1,6 +1,6 @@
 """
 
-Este módulo é responsável pelo processamento das categorias e palavras do liwc e montar a estrutura
+Este módulo é responsável pelo processamento das categorias e palavras do liwc, para assim montar a estrutura
 de dados de acesso.
 
 """
