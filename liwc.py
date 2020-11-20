@@ -16,7 +16,7 @@ class Liwc():
     _process_categories_complete = False
     _process_categories_count_mark = 0
     _process_categories_length_mark = 2
-    categories_mark = "%"
+    _categories_mark = "%"
 
     def __init__(self, path_to_file):
         file = self._open_file(self._absolute_path_file + path_to_file)
@@ -57,7 +57,7 @@ class Liwc():
 
     def _processing_categories_add_mark(self, string):
         line_string = self._handle_line_string(string)
-        categories_mark = self.categories_mark
+        categories_mark = self._categories_mark
         count_mark_categories = self._process_categories_count_mark
         new_count_mark = count_mark_categories
 
