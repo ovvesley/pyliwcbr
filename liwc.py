@@ -5,81 +5,94 @@ de dados de acesso.
 
 """
 import os
+# noinspection PyUnresolvedReferences
+from category import Category
 
 
-class Liwc():
-    _absolute_path_file = ""
-    _raw_file = None
-    _encoding = "utf-8"
+class Liwc:
+    __absolute_path_file = ""
+    __raw_file = None
+    __encoding = "utf-8"
 
-    _categories = {}
-    _process_categories_complete = False
-    _process_categories_count_mark = 0
-    _process_categories_length_mark = 2
-    _categories_mark = "%"
+    __categories = {}
+    __process_categories_complete = False
+    __process_categories_count_mark = 0
+    __process_categories_length_mark = 2
+    __categories_mark = "%"
 
     def __init__(self, path_to_file):
-        file = self._open_file(self._absolute_path_file + path_to_file)
-        self._handle_file(file)
+        file = self.__open_file(self.__absolute_path_file + path_to_file)
+        self.__handle_file(file)
 
-    def _set_absolute_path(self, path):
-        self._absolute_path_file = path
+    def __set_absolute_path(self, path):
+        self.__absolute_path_file = path
 
-    def _set_raw_file(self, file):
-        self._raw_file = file
+    def __set_raw_file(self, file):
+        self.__raw_file = file
 
-    def _open_file(self, path):
-        encoding = self._encoding
+    def __open_file(self, path):
+        encoding = self.__encoding
 
         file = open(path, "r", encoding=encoding)
-        self._set_raw_file(file)
+        self.__set_raw_file(file)
 
         return file
 
-    def _handle_file(self, file):
-        file = self._raw_file
-        processing_categories_complete = self._process_categories_complete
+    def __handle_file(self, file):
+        file = self.__raw_file
+        processing_categories_complete = self.__process_categories_complete
         for line in file:
             if not processing_categories_complete:
-                self._processing_categories(line)
-                processing_categories_complete = self._process_categories_complete
+                self.__processing_categories(line)
+                processing_categories_complete = self.__process_categories_complete
             else:
-                print("complete processinng", line)
 
-    def _set_process_categories_count_mark(self, n):
-        self._process_categories_count_mark = n
+                pass
 
-    def _set_process_categories_complete(self, value):
-        self._process_categories_complete = value
+    def __set_process_categories_count_mark(self, n):
+        self.__process_categories_count_mark = n
 
-    def _handle_line_string(self, line_string):
+    def __set_process_categories_complete(self, value):
+        self.__process_categories_complete = value
+
+    def __handle_line_string(self, line_string):
         return str(line_string.strip())
 
-    def _processing_categories_add_mark(self, string):
-        line_string = self._handle_line_string(string)
-        categories_mark = self._categories_mark
-        count_mark_categories = self._process_categories_count_mark
+    def __processing_categories_add_mark(self, string):
+        line_string = self.__handle_line_string(string)
+        categories_mark = self.__categories_mark
+        count_mark_categories = self.__process_categories_count_mark
         new_count_mark = count_mark_categories
 
         if line_string.strip() == categories_mark:
             new_count_mark = new_count_mark + 1
-            print(line_string, categories_mark)
-            self._set_process_categories_count_mark(new_count_mark)
+            self.__set_process_categories_count_mark(new_count_mark)
         return new_count_mark
 
-    def _processing_categories(self, line_string):
-        length_mark = self._process_categories_length_mark
-        count_mark = self._processing_categories_add_mark(line_string)
-        if length_mark != count_mark:
-            print(line_string)
+    def __handle_category(self, line_string):
+        categories_mark = self.__categories_mark
+        if categories_mark == line_string.strip():
+            pass
         else:
-            self._set_process_categories_complete(True)
+            # Category(line_string)
+
+            pass
+
+    def __add_categories(self):
+        pass
+    def __processing_categories(self, line_string):
+        length_mark = self.__process_categories_length_mark
+        count_mark = self.__processing_categories_add_mark(line_string)
+        if length_mark != count_mark:
+            self.__handle_category(line_string)
+        else:
+            self.__set_process_categories_complete(True)
             return True
 
 
-def _test_class():
+def test_class():
     print(os.path.dirname(__file__))
     liwc = Liwc("resources/dictionaries/liwc_2015_pt2_sem_pulo_linhas.dic")
 
 
-_test_class()
+test_class()
