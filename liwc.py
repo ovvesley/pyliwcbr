@@ -7,6 +7,7 @@ de dados de acesso.
 import os
 # noinspection PyUnresolvedReferences
 from category import Category
+# noinspection PyUnresolvedReferences
 from word import Word
 
 __author__ = "Wesley Ferreira - @ovvesley "
@@ -33,6 +34,7 @@ class Liwc:
     def __init__(self, path_to_file):
         file = self.__open_file(self.__absolute_path_file + path_to_file)
         self.__handle_file(file)
+        self.__handle_calculate_dict()
 
     def __set_absolute_path(self, path):
         self.__absolute_path_file = path
@@ -52,7 +54,6 @@ class Liwc:
         file = self.__raw_file
         processing_categories_complete = self.__process_categories_complete
         processing_words_complete = self.__process_words_complete
-
         for line in file:
             if not processing_categories_complete:
                 self.__processing_categories(line)
@@ -124,6 +125,28 @@ class Liwc:
                 return category
         raise NameError(
             "Categoria com id {} não definida. Verifique o dicionário e veja se a categoria foi definida.".format(id))
+
+    def __handle_calculate_dict(self):
+        words = self.get_words()
+        categories = self.get_categories()
+
+        self.__link_reference_words_and_categories(words, categories)
+
+    def __link_reference_words_and_categories(self, words, categories):
+        for word in words:
+            word_categories = self.get_categories_by_word(word)
+            for category in word_categories:
+                category.add_word(word)
+            word.set_categories(word_categories)
+
+    def get_categories_by_word(self, word):
+        categories_ids = word.get_categories_ids()
+        categories = []
+        for category_id in categories_ids:
+            new_category = self.find_id_category(category_id)
+            categories.append(new_category)
+        return categories
+
 
 
 def test_class():
