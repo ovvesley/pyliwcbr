@@ -7,6 +7,7 @@ de dados de acesso.
 import os
 # noinspection PyUnresolvedReferences
 from category import Category
+from word import Word
 
 __author__ = "Wesley Ferreira - @ovvesley "
 __copyright__ = "Copyright 2020, Chat Analyse Project"
@@ -24,10 +25,14 @@ class Liwc:
     __process_categories_length_mark = 2
     __categories_mark = "%"
 
+    __words = set()
+    __process_words_complete = False
+
+
+
     def __init__(self, path_to_file):
         file = self.__open_file(self.__absolute_path_file + path_to_file)
         self.__handle_file(file)
-        print(self.__categories)
 
     def __set_absolute_path(self, path):
         self.__absolute_path_file = path
@@ -46,13 +51,16 @@ class Liwc:
     def __handle_file(self, file):
         file = self.__raw_file
         processing_categories_complete = self.__process_categories_complete
+        processing_words_complete = self.__process_words_complete
+
         for line in file:
             if not processing_categories_complete:
                 self.__processing_categories(line)
                 processing_categories_complete = self.__process_categories_complete
-            else:
 
-                pass
+            if not processing_words_complete and processing_categories_complete:
+                self.__processing_words(line)
+
 
     def __set_process_categories_count_mark(self, n):
         self.__process_categories_count_mark = n
@@ -82,6 +90,14 @@ class Liwc:
             category = Category(line_string)
             self.__add_categories(category)
 
+    def __processing_words(self, line_string):
+        word = Word(line_string)
+        self.__add_word(word)
+        pass
+
+    def __add_word(self, word):
+        self.__words.add(word)
+
     def __add_categories(self, category):
         self.__categories.add(category)
 
@@ -97,6 +113,9 @@ class Liwc:
     def get_categories(self):
         return self.__categories
 
+    def get_words(self):
+        return self.__words
+
     def find_id_category(self, id):
         id = str(id)
         categories = self.get_categories()
@@ -110,7 +129,8 @@ class Liwc:
 def test_class():
     print(os.path.dirname(__file__))
     liwc = Liwc("resources/dictionaries/liwc_2015_pt2_sem_pulo_linhas.dic")
-    print(liwc.find_id_category(25))
+    print(liwc.get_words())
+    print(liwc.get_categories())
 
 
 test_class()
