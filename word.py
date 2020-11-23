@@ -1,3 +1,14 @@
+"""
+
+Este módulo é responsável pela classe de Palavra(Word) do liwc, informando texto da palavra e as categorias que a palavra pertence.
+
+"""
+
+__author__ = "Wesley Ferreira - @ovvesley "
+__copyright__ = "Copyright 2020, Chat Analyse Project"
+__email__ = "ovvesley@protonmail.com"
+
+
 class Word:
     __raw_text = ""
     __categories_ids = set()
@@ -44,17 +55,14 @@ class Word:
         self.__set_raw_text(raw_text)
         self.__set_value(value_word)
 
-
     def get_categories_ids(self):
         return self.__categories_ids
-
-
-
 
 
 def __test_class():
     word1 = Word("empurrarei	20	92	100	101")
     word2 = Word("encardido	30	32	120	121")
     word3 = Word(":\	30	32	120	122")
+
 
 __test_class()
