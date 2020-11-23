@@ -16,7 +16,7 @@ class Category:
     __raw_tag = ""
     __child_category = None
     __parent_category = None
-    __words = set()
+    __words = []
     __level = 0
 
     def __init__(self, line_string):
@@ -61,8 +61,8 @@ class Category:
     def __str__(self):
         return self.__id + "-" + self.__tag
 
-    def add_word(self, word):
-        self.__words.add(word)
+    def set_words(self, words):
+        self.__words = words
 
 
 def _test_class():

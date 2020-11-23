@@ -9,6 +9,7 @@ import os
 from category import Category
 # noinspection PyUnresolvedReferences
 from word import Word
+from collections import defaultdict
 
 __author__ = "Wesley Ferreira - @ovvesley "
 __copyright__ = "Copyright 2020, Chat Analyse Project"
@@ -28,8 +29,6 @@ class Liwc:
 
     __words = set()
     __process_words_complete = False
-
-
 
     def __init__(self, path_to_file):
         file = self.__open_file(self.__absolute_path_file + path_to_file)
@@ -51,7 +50,6 @@ class Liwc:
         return file
 
     def __handle_file(self, file):
-        file = self.__raw_file
         processing_categories_complete = self.__process_categories_complete
         processing_words_complete = self.__process_words_complete
         for line in file:
@@ -62,14 +60,14 @@ class Liwc:
             if not processing_words_complete and processing_categories_complete:
                 self.__processing_words(line)
 
-
     def __set_process_categories_count_mark(self, n):
         self.__process_categories_count_mark = n
 
     def __set_process_categories_complete(self, value):
         self.__process_categories_complete = value
 
-    def __handle_line_string(self, line_string):
+    @staticmethod
+    def __handle_line_string(line_string):
         return str(line_string.strip())
 
     def __processing_categories_add_mark(self, string):
@@ -117,11 +115,11 @@ class Liwc:
     def get_words(self):
         return self.__words
 
-    def find_id_category(self, id):
-        id = str(id)
+    def find_id_category(self, identifier):
+        identifier = str(identifier)
         categories = self.get_categories()
         for category in categories:
-            if category.get_id() == id:
+            if category.get_id() == identifier:
                 return category
         raise NameError(
             "Categoria com id {} não definida. Verifique o dicionário e veja se a categoria foi definida.".format(id))
@@ -133,11 +131,19 @@ class Liwc:
         self.__link_reference_words_and_categories(words, categories)
 
     def __link_reference_words_and_categories(self, words, categories):
+        dict_word_category = defaultdict(list)
+        dict_category_word = defaultdict(set)
+
         for word in words:
             word_categories = self.get_categories_by_word(word)
-            for category in word_categories:
-                category.add_word(word)
+            dict_word_category[word] = word_categories
             word.set_categories(word_categories)
+            for category_word in word_categories:
+                dict_category_word[category_word].add(word)
+
+        for category in categories:
+            category_words = dict_category_word[category]
+            category.set_words(category_words)
 
     def get_categories_by_word(self, word):
         categories_ids = word.get_categories_ids()
@@ -148,12 +154,13 @@ class Liwc:
         return categories
 
 
-
 def test_class():
     print(os.path.dirname(__file__))
     liwc = Liwc("resources/dictionaries/liwc_2015_pt2_sem_pulo_linhas.dic")
-    print(liwc.get_words())
-    print(liwc.get_categories())
+    words = liwc.get_words()
+    categories = liwc.get_categories()
+
+
 
 
 test_class()
