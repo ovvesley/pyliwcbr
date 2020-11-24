@@ -156,7 +156,7 @@ class Liwc:
 
 def test_class():
     print(os.path.dirname(__file__))
-    liwc = Liwc("resources/dictionaries/liwc_2015_pt2_sem_pulo_linhas.dic")
+    liwc = Liwc("data/dictionaries/liwc_2015_pt2_sem_pulo_linhas.dic")
     words = liwc.get_words()
     categories = liwc.get_categories()
 
