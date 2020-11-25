@@ -66,6 +66,18 @@ Classe de controle ao dicionário liwc, responsável por informar os principais 
 
 O objeto **Liwc** possui os seguintes métodos: 
 
+| Método  |  Descrição |
+| ------- |-----|
+| ```get_words() ``` | Pegar todas as palavras do dicionario; cada separada em instancia da classe Word|
+|```get_categories() ``` |Pegar todas as categorias do dicionario; cada separada em instancia da classe Category |
+|```find_id_category(identifier) ``` | Buscar uma categoria através do Id da categoria|
+|```raw_word_equals_word_obj(raw_word, word) ``` | Verificar igualdade entre string de palavra e objeto instancia de Word|
+|```find_word_by_raw_word(str_word) ``` | Buscar instancia de Word que possui str_word como valor.|
+|```proccess_sentences(sentence) ``` |Informar uma sentença em string e receber uma instancia de Sentece.|
+
+
+
+
 
 
 
