@@ -150,4 +150,7 @@ print(sentence_words)
 
 
 ## Credits
+Desenvolvido por @ovvesley para Chat Analyse
+
+---
 Feito com ❤ no Rio de Janeiro.
