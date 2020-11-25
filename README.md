@@ -94,7 +94,7 @@ liwc = Liwc("path/to/dict/file.dic)
 categories = liwc.get_categories()
 print(categories)
 
->> [ ... ... ]
+>> [ <category.Category object at 0x0000017D150B1FD0>, <category.Category object at 0x0000017D150B1850> ...]
 
 ```
 ---
@@ -111,8 +111,9 @@ liwc = Liwc("path/to/dict/file.dic)
 
 words = liwc.get_words()
 print(words)
+>> [ <word.Word object at 0x000001513B980040>, <word.Word object at 0x000001513B400070>, ... ]
 
->> [ ... ... ]
+
 
 ```
 ---
