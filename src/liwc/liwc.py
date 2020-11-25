@@ -9,7 +9,12 @@ import os
 from category import Category
 # noinspection PyUnresolvedReferences
 from word import Word
+# noinspection PyUnresolvedReferences
+from sentence import Sentence
 from collections import defaultdict
+# noinspection PyUnresolvedReferences
+import itertools
+from utils import handle_string
 
 __author__ = "Wesley Ferreira - @ovvesley "
 __copyright__ = "Copyright 2020, Chat Analyse Project"
@@ -153,14 +158,60 @@ class Liwc:
             categories.append(new_category)
         return categories
 
+    def __handle_proccess_sentences(self, sentence):
+        raw_words = sentence.get_raw_words()
+        sentence_words = []
+        sentence_categories = []
+
+        for raw_word in raw_words:
+            word = self.find_word_by_raw_word(raw_word)
+            if word:
+                sentence_words.append(word)
+
+        for word in sentence_words:
+            categories = word.get_categories()
+            sentence_categories.append(categories)
+
+
+        sentence_categories = list(itertools.chain.from_iterable(sentence_categories))
+
+        sentence.set_words(sentence_words)
+        sentence.set_categories(sentence_categories)
+
+        return sentence
+
+    def raw_word_equals_word_obj(self, raw_word, obj_word):
+        new_str_obj_word = handle_string.strip_accents(obj_word.get_value()).lower()
+        new_str_raw_word = handle_string.strip_accents(raw_word).lower()
+
+        if new_str_obj_word == new_str_raw_word:
+            return True
+        else:
+            return False
+
+    def find_word_by_raw_word(self, str_word):
+        words = self.get_words()
+        for word in words:
+            if self.raw_word_equals_word_obj(str_word, word):
+                return word
+        return None
+
+    def proccess_sentences(self, sentence):
+        sentence = Sentence(sentence)
+        self.__handle_proccess_sentences(sentence)
+        return sentence
+
 
 def test_class():
     print(os.path.dirname(__file__))
     liwc = Liwc("data/dictionaries/liwc_2015_pt2_sem_pulo_linhas.dic")
+
+    msg = "Olá, tudo bem?"
     words = liwc.get_words()
     categories = liwc.get_categories()
 
-
+    sentence = liwc.proccess_sentences(msg)
+    print(sentence)
 
 
 test_class()
