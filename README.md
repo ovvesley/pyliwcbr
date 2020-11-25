@@ -5,9 +5,9 @@ Pyliwcbr é uma biblioteca de acesso ao dicionário pyliwcbr.
 ## 🦾Uso 
 
 ```python
-import pyliwc.Liwc
+import pyliwcbr.Liwc
 
-liwc = Liwc("path/to/dict/file.dic)
+liwc = Liwc("path/to/liwc/file.dic)
 
 ```
 
@@ -46,7 +46,7 @@ Um objeto do tipo **Category** possui os seguintes métodos:
 |```get_words() ``` | Listar todas as palavras que possui o objeto como categoria. |
 |```get_parent_category() ``` | Pegar a categoria pai da categoria. (*em desenvolvimento*) |
 
-
+---
 ### **Sentence** 
 
 Classe de sentença é responsável por referenciar uma sentença. Classe utilizada como objeto de retorno ao informar uma mensagem para analisar no objeto liwc.
@@ -58,6 +58,8 @@ O objeto **Sentence** possui os seguintes métodos:
 | ```get_words() ``` | Pegar todos as instancias de Word dentro da sentença  |
 |```get_categories() ``` |Pegar todos as instancias de Category dentro da sentença |
 |```get_raw_value() ``` | Pegar o valor da sentença.(*em desenvolvimento*) |
+
+---
 
 ### **Liwc** 
 
@@ -74,6 +76,71 @@ O objeto **Liwc** possui os seguintes métodos:
 |```raw_word_equals_word_obj(raw_word, word) ``` | Verificar igualdade entre string de palavra e objeto instancia de Word|
 |```find_word_by_raw_word(str_word) ``` | Buscar instancia de Word que possui str_word como valor.|
 |```proccess_sentences(sentence) ``` |Informar uma sentença em string e receber uma instancia de Sentece.|
+---
+
+## 🦕 Outros exemplos de uso:
+
+
+### **Pegar todas as categorias do dicionario**
+
+Exemplo de código para listar todas as categorias do dicionário.
+
+```python
+import pyliwcbr.Liwc
+
+
+liwc = Liwc("path/to/dict/file.dic)
+
+categories = liwc.get_categories()
+print(categories)
+
+>> [ ... ... ]
+
+```
+---
+
+### **Pegar todas as palavras do dicionario**
+
+Exemplo de código para listar todas as categorias do dicionário.
+
+```python
+import pyliwc.Liwc
+
+
+liwc = Liwc("path/to/dict/file.dic)
+
+words = liwc.get_words()
+print(words)
+
+>> [ ... ... ]
+
+```
+---
+
+### **Processar uma sentença e verificar palavras e categorias do dicionario**
+
+Exemplo de código que processa uma mensagem e informa categorias e palavras da mensagem.
+
+```python
+import pyliwcbr.Liwc
+
+
+liwc = Liwc("path/to/dict/file.dic)
+
+message = "Olá, tudo bem?"
+sentence = liwc.proccess_sentence(message)
+
+sentence_categories = sentence.get_categories()
+sentence_words = sentence.get_words()
+
+print(sentence_categories)
+>> [... ... ... ]
+
+print(sentence_words)
+>> [ ... ... ...  ]
+
+```
+---
 
 
 
