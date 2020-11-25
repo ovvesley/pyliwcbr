@@ -104,7 +104,7 @@ print(categories)
 Exemplo de código para listar todas as categorias do dicionário.
 
 ```python
-import pyliwc.Liwc
+import pyliwcbr.Liwc
 
 
 liwc = Liwc("path/to/dict/file.dic)
