@@ -1,6 +1,6 @@
 # Pyliwcbr (em desenvolvimento)
 
-Pyliwcbr é uma biblioteca de acesso ao dicionário pyliwcbr.
+Pyliwcbr é uma biblioteca de acesso ao dicionário liwc.
 
 ## 🦾Uso 
 
