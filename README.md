@@ -149,5 +149,5 @@ print(sentence_words)
 
 
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+## Credits
+Feito com ❤ no Rio de Janeiro.
