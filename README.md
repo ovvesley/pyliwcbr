@@ -97,7 +97,7 @@ print(categories)
 >> [ <category.Category object at 0x0000017D150B1FD0>, <category.Category object at 0x0000017D150B1850> ...]
 
 ```
-*Dump de word:*
+*Dump de Category:*
 
 ![Dump da instancia Sentence ](data/images/dump_obj_category.png)
 
