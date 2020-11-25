@@ -49,11 +49,15 @@ Um objeto do tipo **Category** possui os seguintes métodos:
 
 ### **Sentence** 
 
-Classe de sentença que é responsável por referenciar uma sentença. Classe utilizada como objeto de retorno ao informar uma mensagem para se analisar ao objeto liwc.
+Classe de sentença é responsável por referenciar uma sentença. Classe utilizada como objeto de retorno ao informar uma mensagem para analisar no objeto liwc.
 
 O objeto **Sentence** possui os seguintes métodos: 
 
-
+| Método  |  Descrição |
+| ------- |-----|
+| ```get_words() ``` | Pegar todos as instancias de Word dentro da sentença  |
+|```get_categories() ``` |Pegar todos as instancias de Category dentro da sentença |
+|```get_raw_value() ``` | Pegar o valor da sentença.(*em desenvolvimento*) |
 
 ### **Liwc** 
 
