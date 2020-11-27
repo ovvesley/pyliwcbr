@@ -1,14 +1,11 @@
 README.md
 setup.py
 dokr_pkg/__init__.py
+pyliwcbr/__init__.py
 pyliwcbr.egg-info/PKG-INFO
 pyliwcbr.egg-info/SOURCES.txt
 pyliwcbr.egg-info/dependency_links.txt
 pyliwcbr.egg-info/top_level.txt
-src/liwc/category.py
-src/liwc/liwc.py
-src/liwc/sentence.py
-src/liwc/word.py
 src/liwc/category.py
 src/liwc/liwc.py
 src/liwc/sentence.py
