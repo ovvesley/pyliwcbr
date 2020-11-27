@@ -4,5 +4,4 @@ dokr_pkg/__init__.py
 pyliwcbr.egg-info/PKG-INFO
 pyliwcbr.egg-info/SOURCES.txt
 pyliwcbr.egg-info/dependency_links.txt
-pyliwcbr.egg-info/requires.txt
 pyliwcbr.egg-info/top_level.txt
