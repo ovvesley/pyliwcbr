@@ -1,5 +1,6 @@
-import liwc
-print(liwc)
+from pyliwcbr.src.liwc import liwc
+
+print(liwc.Liwc)
 
 __all__ = [
     'liwc'
