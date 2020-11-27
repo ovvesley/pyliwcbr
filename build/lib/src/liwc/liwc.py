@@ -5,14 +5,10 @@ de dados de acesso.
 
 """
 import os
-# noinspection PyUnresolvedReferences
 from category import Category
-# noinspection PyUnresolvedReferences
 from word import Word
-# noinspection PyUnresolvedReferences
 from sentence import Sentence
 from collections import defaultdict
-# noinspection PyUnresolvedReferences
 import itertools
 from utils import handle_string
 
@@ -36,9 +32,11 @@ class Liwc:
     __process_words_complete = False
 
     def __init__(self, path_to_file):
-        file = self.__open_file(self.__absolute_path_file + path_to_file)
+        print(path_to_file)
+        file = self.__open_file(path_to_file)
         self.__handle_file(file)
         self.__handle_calculate_dict()
+        file.close()
 
     def __set_absolute_path(self, path):
         self.__absolute_path_file = path

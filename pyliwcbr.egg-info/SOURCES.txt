@@ -1,5 +1,6 @@
 README.md
 setup.py
+test.py
 dokr_pkg/__init__.py
 pyliwcbr/__init__.py
 pyliwcbr.egg-info/PKG-INFO
