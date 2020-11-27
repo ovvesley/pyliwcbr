@@ -7,3 +7,7 @@ pyliwcbr.egg-info/PKG-INFO
 pyliwcbr.egg-info/SOURCES.txt
 pyliwcbr.egg-info/dependency_links.txt
 pyliwcbr.egg-info/top_level.txt
+pyliwcbr/src/liwc/category.py
+pyliwcbr/src/liwc/liwc.py
+pyliwcbr/src/liwc/sentence.py
+pyliwcbr/src/liwc/word.py

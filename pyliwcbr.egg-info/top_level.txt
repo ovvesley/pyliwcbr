@@ -1,1 +1,2 @@
 pyliwcbr
+pyliwcbr/src/liwc
