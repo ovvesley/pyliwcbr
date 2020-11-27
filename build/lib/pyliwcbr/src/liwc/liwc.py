@@ -5,12 +5,12 @@ de dados de acesso.
 
 """
 import os
-from category import Category
-from word import Word
-from sentence import Sentence
+from pyliwcbr.src.liwc.category import Category
+from pyliwcbr.src.liwc.word import Word
+from pyliwcbr.src.liwc.sentence import Sentence
 from collections import defaultdict
 import itertools
-from utils import handle_string
+from pyliwcbr.src.liwc.utils import handle_string
 
 __author__ = "Wesley Ferreira - @ovvesley "
 __copyright__ = "Copyright 2020, Chat Analyse Project"
