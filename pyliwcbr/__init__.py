@@ -1,4 +1,4 @@
-from pyliwcbr.src.liwc import liwc
+from src.liwc import liwc
 
 print(liwc.Liwc)
 

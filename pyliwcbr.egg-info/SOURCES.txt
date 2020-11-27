@@ -11,3 +11,7 @@ pyliwcbr/src/liwc/category.py
 pyliwcbr/src/liwc/liwc.py
 pyliwcbr/src/liwc/sentence.py
 pyliwcbr/src/liwc/word.py
+pyliwcbr/src/liwc/category.py
+pyliwcbr/src/liwc/liwc.py
+pyliwcbr/src/liwc/sentence.py
+pyliwcbr/src/liwc/word.py
