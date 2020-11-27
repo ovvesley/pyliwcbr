@@ -1,4 +1,4 @@
-from src.liwc import liwc
+import liwc
 
 print(liwc.Liwc)
 

@@ -10,7 +10,7 @@ setuptools.setup(
    long_description=long_description,
    long_description_content_type="text/markdown",
    url="www.github.com/ovvesley/pyliwcbr",
-   packages=['pyliwcbr', "pyliwcbr/src/liwc"],
+   packages=['pyliwcbr', "pyliwcbr/src/liwc", "pyliwcbr/src/liwc/utils"],
    classifiers=[
       "Programming Language :: Python :: 3",
       "License :: OSI Approved :: MIT License",

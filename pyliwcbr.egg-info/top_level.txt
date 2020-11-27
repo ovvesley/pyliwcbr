@@ -1,2 +1,3 @@
 pyliwcbr
 pyliwcbr/src/liwc
+pyliwcbr/src/liwc/utils

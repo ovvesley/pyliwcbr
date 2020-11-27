@@ -11,7 +11,11 @@ pyliwcbr/src/liwc/category.py
 pyliwcbr/src/liwc/liwc.py
 pyliwcbr/src/liwc/sentence.py
 pyliwcbr/src/liwc/word.py
+pyliwcbr/src/liwc/utils/__init__.py
+pyliwcbr/src/liwc/utils/handle_string.py
 pyliwcbr/src/liwc/category.py
 pyliwcbr/src/liwc/liwc.py
 pyliwcbr/src/liwc/sentence.py
 pyliwcbr/src/liwc/word.py
+pyliwcbr/src/liwc/utils/__init__.py
+pyliwcbr/src/liwc/utils/handle_string.py
