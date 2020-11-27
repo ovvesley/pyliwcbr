@@ -1,0 +1,167 @@
+Metadata-Version: 2.1
+Name: pyliwcbr
+Version: 0.0.1
+Summary: Biblioteca de acesso ao dicionário Liwc
+Home-page: www.github.com/ovvesley/pyliwcbr
+Author: Wesley Ferreira
+Author-email: ovvesley@protonmail.com
+License: UNKNOWN
+Description: # Pyliwcbr (em desenvolvimento)
+        
+        Pyliwcbr Ã© uma biblioteca de acesso ao dicionÃ¡rio liwc.
+        
+        ## ðŸ¦¾Uso 
+        
+        ```python
+        import pyliwcbr.Liwc
+        
+        liwc = Liwc("path/to/liwc/file.dic)
+        
+        ```
+        
+        ## ðŸ“„Modelos
+        
+        - Word
+        - Category
+        - Sentence
+        - Liwc
+        
+        ---
+        ### **Word** 
+        
+        Classe de palavra que Ã© responsÃ¡vel por referenciar cada palavra do dicionÃ¡rio Liwc.
+        
+        Um objeto do tipo **Word** possui os seguintes mÃ©todos: 
+        
+        | MÃ©todo  |  DescriÃ§Ã£o |
+        | ------- |-----|
+        | ```get_categories() ``` | Listar todas as categorias que a palavra foi classificada |
+        |```get_value() ``` | Pegar o valor textual da palavra |
+        |```get_categories_ids() ``` | Pegar listar o id de todas as categorias que a palavra foi classificada. |
+        
+        
+        ---
+        ### **Category** 
+        
+        Classe de categoria que Ã© responsÃ¡vel por referenciar cada categoria do dicionÃ¡rio Liwc.
+        
+        Um objeto do tipo **Category** possui os seguintes mÃ©todos: 
+        
+        | MÃ©todo  |  DescriÃ§Ã£o |
+        | ------- |-----|
+        | ```get_id() ``` | Pegar o **id** nÃºmerico da categoria |
+        |```get_tag() ``` | Pegar o valor textual da categoria |
+        |```get_words() ``` | Listar todas as palavras que possui o objeto como categoria. |
+        |```get_parent_category() ``` | Pegar a categoria pai da categoria. (*em desenvolvimento*) |
+        
+        ---
+        ### **Sentence** 
+        
+        Classe de sentenÃ§a Ã© responsÃ¡vel por referenciar uma sentenÃ§a. Classe utilizada como objeto de retorno ao informar uma mensagem para analisar no objeto liwc.
+        
+        O objeto **Sentence** possui os seguintes mÃ©todos: 
+        
+        | MÃ©todo  |  DescriÃ§Ã£o |
+        | ------- |-----|
+        | ```get_words() ``` | Pegar todos as instancias de Word dentro da sentenÃ§a  |
+        |```get_categories() ``` |Pegar todos as instancias de Category dentro da sentenÃ§a |
+        |```get_raw_value() ``` | Pegar o valor da sentenÃ§a.(*em desenvolvimento*) |
+        
+        ---
+        
+        ### **Liwc** 
+        
+        Classe de controle ao dicionÃ¡rio liwc, responsÃ¡vel por informar os principais itens de processamento. AlÃ©m disso, responsÃ¡vel por processar as funcionalidades principais de processar frases
+        
+        
+        O objeto **Liwc** possui os seguintes mÃ©todos: 
+        
+        | MÃ©todo  |  DescriÃ§Ã£o |
+        | ------- |-----|
+        | ```get_words() ``` | Pegar todas as palavras do dicionario; cada separada em instancia da classe Word|
+        |```get_categories() ``` |Pegar todas as categorias do dicionario; cada separada em instancia da classe Category |
+        |```find_id_category(identifier) ``` | Buscar uma categoria atravÃ©s do Id da categoria|
+        |```raw_word_equals_word_obj(raw_word, word) ``` | Verificar igualdade entre string de palavra e objeto instancia de Word|
+        |```find_word_by_raw_word(str_word) ``` | Buscar instancia de Word que possui str_word como valor.|
+        |```proccess_sentences(sentence) ``` |Informar uma sentenÃ§a em string e receber uma instancia de Sentece.|
+        ---
+        
+        ## ðŸ¦• Outros exemplos de uso:
+        
+        
+        ### **Pegar todas as categorias do dicionario**
+        
+        Exemplo de cÃ³digo para listar todas as categorias do dicionÃ¡rio.
+        
+        ```python
+        import pyliwcbr.Liwc
+        
+        
+        liwc = Liwc("path/to/dict/file.dic)
+        
+        categories = liwc.get_categories()
+        print(categories)
+        
+        >> [ ... ... ]
+        
+        ```
+        ---
+        
+        ### **Pegar todas as palavras do dicionario**
+        
+        Exemplo de cÃ³digo para listar todas as categorias do dicionÃ¡rio.
+        
+        ```python
+        import pyliwc.Liwc
+        
+        
+        liwc = Liwc("path/to/dict/file.dic)
+        
+        words = liwc.get_words()
+        print(words)
+        
+        >> [ ... ... ]
+        
+        ```
+        ---
+        
+        ### **Processar uma sentenÃ§a e verificar palavras e categorias do dicionario**
+        
+        Exemplo de cÃ³digo que processa uma mensagem e informa categorias e palavras da mensagem.
+        
+        ```python
+        import pyliwcbr.Liwc
+        
+        
+        liwc = Liwc("path/to/dict/file.dic)
+        
+        message = "OlÃ¡, tudo bem?"
+        sentence = liwc.proccess_sentence(message)
+        
+        sentence_categories = sentence.get_categories()
+        sentence_words = sentence.get_words()
+        
+        print(sentence_categories)
+        >> [... ... ... ]
+        
+        print(sentence_words)
+        >> [ ... ... ...  ]
+        
+        ```
+        ---
+        
+        
+        
+        
+        
+        
+        
+        
+        ## License
+        [MIT](https://choosealicense.com/licenses/mit/)
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
