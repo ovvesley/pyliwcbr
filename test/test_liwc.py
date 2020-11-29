@@ -48,6 +48,18 @@ def test_tc03_find_category_by_id():
 
     assert category.get_id() == str(LIWC_CATEGORY_ID), ERR_MESSAGE
 
+def test_tc04_category_get_words():
+    liwc = pyliwc.Liwc(LIWC_PATH_TO_DIC)
+
+
+    category = liwc.find_id_category(LIWC_CATEGORY_ID)
+
+    words_by_category = category.get_words()
+
+    ERR_MESSAGE = "Palavras da Categoria 1 não é maior que 0"
+
+    assert len(words_by_category) > 0, ERR_MESSAGE
+
 
 
 
