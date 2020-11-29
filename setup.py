@@ -3,7 +3,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
    long_description = fh.read()
 setuptools.setup(
    name='pyliwcbr',
-   version='0.0.2',
+   version='0.0.3',
    author="Wesley Ferreira",
    author_email="ovvesley@protonmail.com",
    description="Biblioteca de acesso ao dicionário Liwc",
