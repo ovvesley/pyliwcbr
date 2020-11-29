@@ -1,2 +1,4 @@
 data/dictionaries
 venv/
+pyliwcbr/__pycache__/
+pyliwcbr/src/liwc/__pycache__
