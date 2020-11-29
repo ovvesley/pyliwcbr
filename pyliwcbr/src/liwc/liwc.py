@@ -4,7 +4,6 @@ Este módulo é responsável pelo processamento das categorias e palavras do liw
 de dados de acesso.
 
 """
-import os
 from pyliwcbr.src.liwc.category import Category
 from pyliwcbr.src.liwc.word import Word
 from pyliwcbr.src.liwc.sentence import Sentence
@@ -31,6 +30,10 @@ class Liwc:
     __process_words_complete = False
 
     def __init__(self, path_to_file, encoding=__encoding):
+
+        if not self.__is_clear():
+            self.clear()
+
         print(path_to_file)
         file = self.__open_file(path_to_file, encoding)
         self.__handle_file(file)
@@ -42,6 +45,13 @@ class Liwc:
 
     def __set_raw_file(self, file):
         self.__raw_file = file
+
+    def __is_clear(self):
+        words = self.get_words()
+        categories = self.get_categories()
+
+        if not words and not categories:
+            return True
 
     def __open_file(self, path, encoding):
 
@@ -77,7 +87,7 @@ class Liwc:
         count_mark_categories = self.__process_categories_count_mark
         new_count_mark = count_mark_categories
 
-        if  categories_mark.strip() == line_string.strip():
+        if  line_string.strip() == categories_mark:
             new_count_mark = new_count_mark + 1
             self.__set_process_categories_count_mark(new_count_mark)
         return new_count_mark
@@ -188,14 +198,8 @@ class Liwc:
         self.__handle_proccess_sentences(sentence)
         return sentence
 
-
-def test_class():
-    print(os.path.dirname(__file__))
-    liwc = Liwc("data/dictionaries/liwc_2015_pt2_sem_pulo_linhas.dic")
-
-    msg = "Olá, tudo bem?"
-    words = liwc.get_words()
-    categories = liwc.get_categories()
-
-    category = categories.pop()
+    def clear(self):
+        self.__words = set()
+        self.__categories = set()
+        del self
 
