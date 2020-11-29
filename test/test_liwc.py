@@ -38,3 +38,16 @@ def test_tc02_get_words_size():
     assert words_size == LIWC_NUMBER_WORDS, ERR_MESSAGE
 
 
+def test_tc03_find_category_by_id():
+    liwc = pyliwc.Liwc(LIWC_PATH_TO_DIC)
+
+
+    category = liwc.find_id_category(LIWC_CATEGORY_ID)
+
+    ERR_MESSAGE = "Não foi possível encontrar a categoria pelo ID"
+
+    assert category.get_id() == str(LIWC_CATEGORY_ID), ERR_MESSAGE
+
+
+
+
