@@ -60,6 +60,40 @@ def test_tc04_category_get_words():
 
     assert len(words_by_category) > 0, ERR_MESSAGE
 
+def test_tc05_process_sentence_get_words():
+    liwc = pyliwc.Liwc(LIWC_PATH_TO_DIC)
 
+    message = "Olá, tudo bem?"
+    sentence = liwc.proccess_sentences(message)
+
+    words = sentence.get_words()
+
+    ERR_MESSAGE = "Palavras  de 'Olá, tudo bem?' não é igual a 3"
+
+    assert len(words) == 3, ERR_MESSAGE
+
+def test_tc06_process_sentence_get_categories():
+    liwc = pyliwc.Liwc(LIWC_PATH_TO_DIC)
+
+    message = "Olá, tudo bem?"
+    sentence = liwc.proccess_sentences(message)
+
+    categories = sentence.get_categories()
+
+    ERR_MESSAGE = "Categorias  de 'Olá, tudo bem?' não é maior que 0"
+
+    assert len(categories) > 0, ERR_MESSAGE
+
+def test_tc07_process_sentence_get_raw_value():
+    liwc = pyliwc.Liwc(LIWC_PATH_TO_DIC)
+
+    message = "Olá, tudo bem?"
+    sentence = liwc.proccess_sentences(message)
+
+    raw_value = sentence.get_raw_value()
+
+    ERR_MESSAGE = "Textos são diferente"
+
+    assert raw_value == message, ERR_MESSAGE
 
 
