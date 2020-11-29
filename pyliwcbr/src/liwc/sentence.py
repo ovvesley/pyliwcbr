@@ -38,6 +38,15 @@ class Sentence:
     def set_categories(self, categories):
         self.__categories = categories
 
+    def get_words(self):
+        return self.__words
+
+    def get_categories(self):
+        return self.__categories
+
+    def get_raw_value(self):
+        return self.__raw_value
+
 
 def __test_class():
     msg = "Olá,,,, tudo bem?"
