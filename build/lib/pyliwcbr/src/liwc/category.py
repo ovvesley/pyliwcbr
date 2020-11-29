@@ -64,6 +64,8 @@ class Category:
     def set_words(self, words):
         self.__words = words
 
+    def get_words(self):
+        return self.__words
 
 def _test_class():
     Category("	2	pronoun (Pronouns)\n")

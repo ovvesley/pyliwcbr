@@ -3,6 +3,7 @@
 Este módulo é responsável pela classe de Palavra(Word) do liwc, informando texto da palavra e as categorias que a palavra pertence.
 
 """
+from pyliwcbr.src.liwc.utils import handle_string
 
 __author__ = "Wesley Ferreira - @ovvesley "
 __copyright__ = "Copyright 2020, Chat Analyse Project"
@@ -57,6 +58,15 @@ class Word:
 
     def get_categories_ids(self):
         return self.__categories_ids
+
+    def is_equals(self, raw_word):
+        new_str_obj_word = handle_string.strip_accents(self.get_value()).lower()
+        new_str_raw_word = handle_string.strip_accents(raw_word).lower()
+
+        if new_str_obj_word == new_str_raw_word:
+            return True
+        else:
+            return False
 
 
 def __test_class():
