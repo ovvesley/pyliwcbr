@@ -10,7 +10,6 @@ from pyliwcbr.src.liwc.word import Word
 from pyliwcbr.src.liwc.sentence import Sentence
 from collections import defaultdict
 import itertools
-from pyliwcbr.src.liwc.utils import handle_string
 
 __author__ = "Wesley Ferreira - @ovvesley "
 __copyright__ = "Copyright 2020, Chat Analyse Project"
@@ -31,9 +30,9 @@ class Liwc:
     __words = set()
     __process_words_complete = False
 
-    def __init__(self, path_to_file):
+    def __init__(self, path_to_file, encoding=__encoding):
         print(path_to_file)
-        file = self.__open_file(path_to_file)
+        file = self.__open_file(path_to_file, encoding)
         self.__handle_file(file)
         self.__handle_calculate_dict()
         file.close()
@@ -44,8 +43,7 @@ class Liwc:
     def __set_raw_file(self, file):
         self.__raw_file = file
 
-    def __open_file(self, path):
-        encoding = self.__encoding
+    def __open_file(self, path, encoding):
 
         file = open(path, "r", encoding=encoding)
         self.__set_raw_file(file)
@@ -79,7 +77,7 @@ class Liwc:
         count_mark_categories = self.__process_categories_count_mark
         new_count_mark = count_mark_categories
 
-        if line_string.strip() == categories_mark:
+        if  categories_mark.strip() == line_string.strip():
             new_count_mark = new_count_mark + 1
             self.__set_process_categories_count_mark(new_count_mark)
         return new_count_mark
@@ -178,19 +176,10 @@ class Liwc:
 
         return sentence
 
-    def raw_word_equals_word_obj(self, raw_word, obj_word):
-        new_str_obj_word = handle_string.strip_accents(obj_word.get_value()).lower()
-        new_str_raw_word = handle_string.strip_accents(raw_word).lower()
-
-        if new_str_obj_word == new_str_raw_word:
-            return True
-        else:
-            return False
-
     def find_word_by_raw_word(self, str_word):
         words = self.get_words()
         for word in words:
-            if self.raw_word_equals_word_obj(str_word, word):
+            if word.is_equals(str_word):
                 return word
         return None
 
@@ -208,8 +197,5 @@ def test_class():
     words = liwc.get_words()
     categories = liwc.get_categories()
 
-    sentence = liwc.proccess_sentences(msg)
-    print(sentence)
+    category = categories.pop()
 
-
-# test_class()
