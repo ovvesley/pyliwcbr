@@ -30,6 +30,7 @@ Um objeto do tipo **Word** possui os seguintes métodos:
 | ```get_categories() ```     | Listar todas as categorias que a palavra foi classificada                |
 | ```get_value() ```          | Pegar o valor textual da palavra                                         |
 | ```get_categories_ids() ``` | Pegar listar o id de todas as categorias que a palavra foi classificada. |
+| ```is_equals(str_word) ``` | Verificar se a string da palavra é igual ao valor do objeto da palavra |
 
 
 ---
@@ -73,7 +74,6 @@ O objeto **Liwc** possui os seguintes métodos:
 | ```get_words() ```                              | Pegar todas as palavras do dicionario; cada separada em instancia da classe Word       |
 | ```get_categories() ```                         | Pegar todas as categorias do dicionario; cada separada em instancia da classe Category |
 | ```find_id_category(identifier) ```             | Buscar uma categoria através do Id da categoria                                        |
-| ```raw_word_equals_word_obj(raw_word, word) ``` | Verificar igualdade entre string de palavra e objeto instancia de Word                 |
 | ```find_word_by_raw_word(str_word) ```          | Buscar instancia de Word que possui str_word como valor.                               |
 | ```proccess_sentences(sentence) ```             | Informar uma sentença em string e receber uma instancia de Sentece.                    |
 ---
