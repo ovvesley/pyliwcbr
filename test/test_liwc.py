@@ -64,7 +64,7 @@ def test_tc05_process_sentence_get_words():
     liwc = pyliwc.Liwc(LIWC_PATH_TO_DIC)
 
     message = "Olá, tudo bem?"
-    sentence = liwc.proccess_sentences(message)
+    sentence = liwc.process_sentence(message)
 
     words = sentence.get_words()
 
@@ -76,7 +76,7 @@ def test_tc06_process_sentence_get_categories():
     liwc = pyliwc.Liwc(LIWC_PATH_TO_DIC)
 
     message = "Olá, tudo bem?"
-    sentence = liwc.proccess_sentences(message)
+    sentence = liwc.process_sentence(message)
 
     categories = sentence.get_categories()
 
@@ -88,7 +88,7 @@ def test_tc07_process_sentence_get_raw_value():
     liwc = pyliwc.Liwc(LIWC_PATH_TO_DIC)
 
     message = "Olá, tudo bem?"
-    sentence = liwc.proccess_sentences(message)
+    sentence = liwc.process_sentence(message)
 
     raw_value = sentence.get_raw_value()
 

@@ -26,7 +26,7 @@ class Liwc:
     __process_categories_length_mark = 2
     __categories_mark = "%"
 
-    __words = set()
+    __words = dict()
     __process_words_complete = False
 
     def __init__(self, path_to_file, encoding=__encoding):
@@ -106,7 +106,7 @@ class Liwc:
         pass
 
     def __add_word(self, word):
-        self.__words.add(word)
+        self.__words[word.get_value()] = word
 
     def __add_categories(self, category):
         self.__categories.add(category)
@@ -123,8 +123,15 @@ class Liwc:
     def get_categories(self):
         return self.__categories
 
+    def get_word(self, word):
+        try:
+            new_str_raw_word = word.lower()
+            return self.__words[new_str_raw_word]
+        except:
+            return None
+
     def get_words(self):
-        return self.__words
+        return self.__words.values()
 
     def find_id_category(self, identifier):
         identifier = str(identifier)
@@ -187,19 +194,16 @@ class Liwc:
         return sentence
 
     def find_word_by_raw_word(self, str_word):
-        words = self.get_words()
-        for word in words:
-            if word.is_equals(str_word):
-                return word
-        return None
+        word = self.get_word(str_word)
+        return word
 
-    def proccess_sentences(self, sentence):
+    def process_sentence(self, sentence):
         sentence = Sentence(sentence)
         self.__handle_proccess_sentences(sentence)
         return sentence
 
     def clear(self):
-        self.__words = set()
+        self.__words = dict()
         self.__categories = set()
         del self
 
