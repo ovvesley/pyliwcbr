@@ -56,9 +56,10 @@ O objeto **Sentence** possui os seguintes métodos:
 
 | Método                  | Descrição                                                                      |
 | ----------------------- | ------------------------------------------------------------------------------ |
-| ```get_words() ```      | Pegar todos as instancias de Word dentro da sentença (*em desenvolvimento*)    |
-| ```get_categories() ``` | Pegar todos as instancias de Category dentro da sentença(*em desenvolvimento*) |
-| ```get_raw_value() ```  | Pegar o valor da sentença.(*em desenvolvimento*)                               |
+| ```get_words() ```      | Pegar todos as instancias de Word dentro da sentença   |
+| ```get_categories() ``` | Pegar todos as instancias de Category dentro da sentença |
+| ```get_raw_word() ``` | Pegar todas  das palavras as strings das possíveis palavras identificadas  |
+| ```get_raw_value() ```  | Pegar o valor da sentença.                         |
 
 ---
 
