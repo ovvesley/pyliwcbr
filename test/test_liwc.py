@@ -25,3 +25,16 @@ def test_tc01_get_categories_size():
     assert size_categories == LIWC_NUMBER_CATEGORIES, ERR_MESSAGE
 
 
+
+def test_tc02_get_words_size():
+    liwc = pyliwc.Liwc(LIWC_PATH_TO_DIC)
+
+    words = liwc.get_words()
+    words_size = len(words)
+
+    ERR_MESSAGE = "Quantidade de palavras não condiz com o definido. Tamanho definido {}; Tamanho existente {}".format(
+        LIWC_NUMBER_WORDS, words_size)
+
+    assert words_size == LIWC_NUMBER_WORDS, ERR_MESSAGE
+
+
