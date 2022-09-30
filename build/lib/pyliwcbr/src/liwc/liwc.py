@@ -7,8 +7,10 @@ de dados de acesso.
 from pyliwcbr.src.liwc.category import Category
 from pyliwcbr.src.liwc.word import Word
 from pyliwcbr.src.liwc.sentence import Sentence
+from pyliwcbr.src.liwc.utils import handle_string
 from collections import defaultdict
 import itertools
+
 
 __author__ = "Wesley Ferreira - @ovvesley "
 __copyright__ = "Copyright 2020, Chat Analyse Project"
@@ -27,6 +29,7 @@ class Liwc:
     __categories_mark = "%"
 
     __words = dict()
+    __words_sn = dict()
     __process_words_complete = False
 
     def __init__(self, path_to_file, encoding=__encoding):
@@ -107,6 +110,10 @@ class Liwc:
 
     def __add_word(self, word):
         self.__words[word.get_value()] = word
+        new_string = handle_string.strip_accents(word.get_value())
+        if '*' in new_string:
+            new_string = new_string.replace('*', '')
+            self.__words_sn[new_string] = word
 
     def __add_categories(self, category):
         self.__categories.add(category)
@@ -124,11 +131,17 @@ class Liwc:
         return self.__categories
 
     def get_word(self, word):
+        new_str_raw_word = word.lower()
         try:
-            new_str_raw_word = word.lower()
             return self.__words[new_str_raw_word]
         except:
-            return None
+            return self.__get_word_normalize(new_str_raw_word)
+
+    def __get_word_normalize(self, word):
+        for word_key in self.__words_sn:
+            if word.startswith(word_key):
+                return self.__words_sn[word_key]
+        return None
 
     def get_words(self):
         return self.__words.values()
