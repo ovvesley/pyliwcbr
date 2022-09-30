@@ -1,180 +1,178 @@
 Metadata-Version: 2.1
 Name: pyliwcbr
-Version: 0.0.3
+Version: 0.0.4
 Summary: Biblioteca de acesso ao dicionário Liwc
 Home-page: www.github.com/ovvesley/pyliwcbr
 Author: Wesley Ferreira
 Author-email: ovvesley@protonmail.com
-License: UNKNOWN
-Description: # Pyliwcbr (em desenvolvimento)
-        
-        Pyliwcbr é uma biblioteca de acesso ao dicionário liwc.
-        
-        ## 🦾Uso 
-        
-        ```python
-        import pyliwcbr.Liwc
-        
-        liwc = Liwc("path/to/liwc/file.dic)
-        
-        ```
-        
-        ## 📄Modelos
-        
-        - Word
-        - Category
-        - Sentence
-        - Liwc
-        
-        ---
-        ### **Word** 
-        
-        Classe de palavra que é responsável por referenciar cada palavra do dicionário Liwc.
-        
-        Um objeto do tipo **Word** possui os seguintes métodos: 
-        
-        | Método                      | Descrição                                                                |
-        | --------------------------- | ------------------------------------------------------------------------ |
-        | ```get_categories() ```     | Listar todas as categorias que a palavra foi classificada                |
-        | ```get_value() ```          | Pegar o valor textual da palavra                                         |
-        | ```get_categories_ids() ``` | Pegar listar o id de todas as categorias que a palavra foi classificada. |
-        | ```is_equals(str_word) ``` | Verificar se a string da palavra é igual ao valor do objeto da palavra |
-        
-        
-        ---
-        ### **Category** 
-        
-        Classe de categoria que é responsável por referenciar cada categoria do dicionário Liwc.
-        
-        Um objeto do tipo **Category** possui os seguintes métodos: 
-        
-        | Método                       | Descrição                                                    |
-        | ---------------------------- | ------------------------------------------------------------ |
-        | ```get_id() ```              | Pegar o **id** númerico da categoria                         |
-        | ```get_tag() ```             | Pegar o valor textual da categoria                           |
-        | ```get_words() ```           | Listar todas as palavras que possui o objeto como categoria. |
-        | ```get_parent_category() ``` | Pegar a categoria pai da categoria. (*em desenvolvimento*)   |
-        
-        ---
-        ### **Sentence** 
-        
-        Classe de sentença é responsável por referenciar uma sentença. Classe utilizada como objeto de retorno ao informar uma mensagem para analisar no objeto liwc.
-        
-        O objeto **Sentence** possui os seguintes métodos: 
-        
-        | Método                  | Descrição                                                                      |
-        | ----------------------- | ------------------------------------------------------------------------------ |
-        | ```get_words() ```      | Pegar todos as instancias de Word dentro da sentença   |
-        | ```get_categories() ``` | Pegar todos as instancias de Category dentro da sentença |
-        | ```get_raw_word() ``` | Pegar todas  das palavras as strings das possíveis palavras identificadas  |
-        | ```get_raw_value() ```  | Pegar o valor da sentença.                         |
-        
-        ---
-        
-        ### **Liwc** 
-        
-        Classe de controle ao dicionário liwc, responsável por informar os principais itens de processamento. Além disso, responsável por processar as funcionalidades principais de processar frases
-        
-        
-        O objeto **Liwc** possui os seguintes métodos: 
-        
-        | Método                                          | Descrição                                                                              |
-        | ----------------------------------------------- | -------------------------------------------------------------------------------------- |
-        | ```get_words() ```                              | Pegar todas as palavras do dicionario; cada separada em instancia da classe Word       |
-        | ```get_categories() ```                         | Pegar todas as categorias do dicionario; cada separada em instancia da classe Category |
-        | ```find_id_category(identifier) ```             | Buscar uma categoria através do Id da categoria                                        |
-        | ```find_word_by_raw_word(str_word) ```          | Buscar instancia de Word que possui str_word como valor.                               |
-        | ```proccess_sentences(sentence) ```             | Informar uma sentença em string e receber uma instancia de Sentece.                    |
-        ---
-        
-        ## 🦕 Outros exemplos de uso:
-        
-        
-        ### **Pegar todas as categorias do dicionario**
-        
-        Exemplo de código para listar todas as categorias do dicionário.
-        
-        ```python
-        import pyliwcbr.Liwc
-        
-        
-        liwc = Liwc("path/to/dict/file.dic)
-        
-        categories = liwc.get_categories()
-        print(categories)
-        
-        >> [ <category.Category object at 0x0000017D150B1FD0>, <category.Category object at 0x0000017D150B1850> ...]
-        
-        ```
-        *Dump de Category:*
-        
-        ![Dump da instancia Sentence ](data/images/dump_obj_category.png)
-        
-        ---
-        
-        ### **Pegar todas as palavras do dicionario**
-        
-        Exemplo de código para listar todas as categorias do dicionário.
-        
-        ```python
-        import pyliwcbr.Liwc
-        
-        
-        liwc = Liwc("path/to/dict/file.dic)
-        
-        words = liwc.get_words()
-        print(words)
-        >> [ <word.Word object at 0x000001513B980040>, <word.Word object at 0x000001513B400070>, ... ]
-        
-        
-        
-        ```
-        *Dump de word:*
-        
-        ![Dump da instancia Sentence ](data/images/dump_obj_word.png)
-        
-        ---
-        
-        ### **Processar uma sentença e verificar palavras e categorias do dicionario**
-        
-        Exemplo de código que processa uma mensagem e informa categorias e palavras da mensagem.
-        
-        ```python
-        import pyliwcbr.Liwc
-        
-        
-        liwc = Liwc("path/to/dict/file.dic)
-        
-        message = "Olá, tudo bem?"
-        sentence = liwc.proccess_sentence(message)
-        
-        print(sentence)
-        
-        ```
-        
-        *Dump de sentence:*
-        
-        ![Dump da instancia Sentence ](data/images/dump_obj_sentence.png)
-        
-        
-        ---
-        
-        
-        
-        
-        
-        
-        
-        
-        ## Credits
-        Desenvolvido por @ovvesley para Chat Analyse
-        
-        ---
-        Feito com ❤ no Rio de Janeiro.
-        
-Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3
 Description-Content-Type: text/markdown
+
+# Pyliwcbr (em desenvolvimento)
+
+Pyliwcbr é uma biblioteca de acesso ao dicionário liwc.
+
+## 🦾Uso 
+
+```python
+import pyliwcbr.Liwc
+
+liwc = Liwc("path/to/liwc/file.dic)
+
+```
+
+## 📄Modelos
+
+- Word
+- Category
+- Sentence
+- Liwc
+
+---
+### **Word** 
+
+Classe de palavra que é responsável por referenciar cada palavra do dicionário Liwc.
+
+Um objeto do tipo **Word** possui os seguintes métodos: 
+
+| Método                      | Descrição                                                                |
+| --------------------------- | ------------------------------------------------------------------------ |
+| ```get_categories() ```     | Listar todas as categorias que a palavra foi classificada                |
+| ```get_value() ```          | Pegar o valor textual da palavra                                         |
+| ```get_categories_ids() ``` | Pegar listar o id de todas as categorias que a palavra foi classificada. |
+| ```is_equals(str_word) ``` | Verificar se a string da palavra é igual ao valor do objeto da palavra |
+
+
+---
+### **Category** 
+
+Classe de categoria que é responsável por referenciar cada categoria do dicionário Liwc.
+
+Um objeto do tipo **Category** possui os seguintes métodos: 
+
+| Método                       | Descrição                                                    |
+| ---------------------------- | ------------------------------------------------------------ |
+| ```get_id() ```              | Pegar o **id** númerico da categoria                         |
+| ```get_tag() ```             | Pegar o valor textual da categoria                           |
+| ```get_words() ```           | Listar todas as palavras que possui o objeto como categoria. |
+| ```get_parent_category() ``` | Pegar a categoria pai da categoria. (*em desenvolvimento*)   |
+
+---
+### **Sentence** 
+
+Classe de sentença é responsável por referenciar uma sentença. Classe utilizada como objeto de retorno ao informar uma mensagem para analisar no objeto liwc.
+
+O objeto **Sentence** possui os seguintes métodos: 
+
+| Método                  | Descrição                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------ |
+| ```get_words() ```      | Pegar todos as instancias de Word dentro da sentença   |
+| ```get_categories() ``` | Pegar todos as instancias de Category dentro da sentença |
+| ```get_raw_word() ``` | Pegar todas  das palavras as strings das possíveis palavras identificadas  |
+| ```get_raw_value() ```  | Pegar o valor da sentença.                         |
+
+---
+
+### **Liwc** 
+
+Classe de controle ao dicionário liwc, responsável por informar os principais itens de processamento. Além disso, responsável por processar as funcionalidades principais de processar frases
+
+
+O objeto **Liwc** possui os seguintes métodos: 
+
+| Método                                          | Descrição                                                                              |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------- |
+| ```get_words() ```                              | Pegar todas as palavras do dicionario; cada separada em instancia da classe Word       |
+| ```get_categories() ```                         | Pegar todas as categorias do dicionario; cada separada em instancia da classe Category |
+| ```find_id_category(identifier) ```             | Buscar uma categoria através do Id da categoria                                        |
+| ```find_word_by_raw_word(str_word) ```          | Buscar instancia de Word que possui str_word como valor.                               |
+| ```proccess_sentences(sentence) ```             | Informar uma sentença em string e receber uma instancia de Sentece.                    |
+---
+
+## 🦕 Outros exemplos de uso:
+
+
+### **Pegar todas as categorias do dicionario**
+
+Exemplo de código para listar todas as categorias do dicionário.
+
+```python
+import pyliwcbr.Liwc
+
+
+liwc = Liwc("path/to/dict/file.dic)
+
+categories = liwc.get_categories()
+print(categories)
+
+>> [ <category.Category object at 0x0000017D150B1FD0>, <category.Category object at 0x0000017D150B1850> ...]
+
+```
+*Dump de Category:*
+
+![Dump da instancia Sentence ](data/images/dump_obj_category.png)
+
+---
+
+### **Pegar todas as palavras do dicionario**
+
+Exemplo de código para listar todas as categorias do dicionário.
+
+```python
+import pyliwcbr.Liwc
+
+
+liwc = Liwc("path/to/dict/file.dic)
+
+words = liwc.get_words()
+print(words)
+>> [ <word.Word object at 0x000001513B980040>, <word.Word object at 0x000001513B400070>, ... ]
+
+
+
+```
+*Dump de word:*
+
+![Dump da instancia Sentence ](data/images/dump_obj_word.png)
+
+---
+
+### **Processar uma sentença e verificar palavras e categorias do dicionario**
+
+Exemplo de código que processa uma mensagem e informa categorias e palavras da mensagem.
+
+```python
+import pyliwcbr.Liwc
+
+
+liwc = Liwc("path/to/dict/file.dic)
+
+message = "Olá, tudo bem?"
+sentence = liwc.proccess_sentence(message)
+
+print(sentence)
+
+```
+
+*Dump de sentence:*
+
+![Dump da instancia Sentence ](data/images/dump_obj_sentence.png)
+
+
+---
+
+
+
+
+
+
+
+
+## Credits
+Desenvolvido por @ovvesley para Chat Analyse
+
+---
+Feito com ❤ no Rio de Janeiro.
